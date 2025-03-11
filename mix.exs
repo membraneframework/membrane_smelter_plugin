@@ -53,7 +53,7 @@ defmodule Membrane.Smelter.Mixfile do
       # VC server start
       {:muontrap, "~> 1.0"},
       # VC API
-      {:req, "~> 0.4.0"},
+      {:req, "~> 0.5.0"},
       {:websockex, "~> 0.4.3"},
       {:jason, "~> 1.4"},
       # Dev

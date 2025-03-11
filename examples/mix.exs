@@ -30,7 +30,7 @@ defmodule Membrane.Smelter.Examples.Mixfile do
       {:membrane_core, "~> 1.0"},
       {:membrane_smelter_plugin, path: ".."},
       # VC API requests
-      {:req, "~> 0.4.0"},
+      {:req, "~> 0.5.0"},
       # Examples
       {:membrane_file_plugin, "~> 0.17.0"},
       {:membrane_realtimer_plugin, "~> 0.9.0"},
