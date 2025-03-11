@@ -1,7 +1,7 @@
 defmodule Membrane.Smelter.Mixfile do
   use Mix.Project
 
-  @version "0.11.0"
+  @version "0.11.1"
   @github_url "https://github.com/membraneframework/membrane_smelter_plugin"
 
   def project do

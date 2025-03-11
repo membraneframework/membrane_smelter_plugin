@@ -15,7 +15,7 @@ The package can be installed by adding `membrane_smelter_plugin` to your list of
 ```elixir
 def deps do
   [
-    {:membrane_smelter_plugin, "~> 0.11.0"}
+    {:membrane_smelter_plugin, "~> 0.11.1"}
   ]
 end
 ```
