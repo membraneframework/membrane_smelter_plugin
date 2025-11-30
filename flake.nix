@@ -12,8 +12,7 @@
         {
           devShells = {
             default = pkgs.mkShell {
-
-              packages = with pkgs; [
+              env.LD_LIBRARY_PATH = lib.makeLibraryPath (with pkgs; [
                 xorg.libX11
                 xorg.libXext
                 xorg.libXrandr
@@ -22,7 +21,12 @@
                 xorg.libXcursor
                 xorg.libXScrnSaver
                 alsa-lib
+                libopus
+                vulkan-loader
+              ]);
 
+              packages = with pkgs; [
+                libGL
                 ffmpeg
                 elixir
               ];
