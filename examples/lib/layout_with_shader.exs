@@ -57,9 +57,8 @@ defmodule LayoutWithShaderPipeline do
       get_child(:smelter)
       |> via_out(Pad.ref(:audio_output, @audio_output_id),
         options: [
-          encoder: %Encoder.Opus{
-            channels: :stereo
-          },
+          channels: :stereo,
+          encoder: %Encoder.Opus{},
           initial: %{
             inputs: [
               %{input_id: "audio_input_0"}

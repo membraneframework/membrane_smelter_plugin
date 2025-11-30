@@ -381,6 +381,10 @@ defmodule Membrane.Smelter do
       encoder: [
         spec: Encoder.Opus.t()
       ],
+      channels: [
+        spec: :stereo | :mono,
+        default: :stereo
+      ],
       send_eos_when: [
         spec: send_eos_condition(),
         default: nil,

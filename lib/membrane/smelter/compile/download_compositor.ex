@@ -5,16 +5,22 @@ defmodule Mix.Tasks.Compile.DownloadCompositor do
   use Mix.Task
   require Membrane.Logger
 
-  @lc_version "v0.4.2"
+  @lc_version "v0.5.0"
 
   @impl Mix.Task
   def run(_args) do
-    case system_architecture() do
-      {:ok, architecture} ->
-        ensure_downloaded(lc_app_directory(architecture), lc_app_url(architecture))
-        :ok
+    case Application.get_env(:membrane_smelter_plugin, :skip_binary_download, false) do
+      false ->
+        case system_architecture() do
+          {:ok, architecture} ->
+            ensure_downloaded(lc_app_directory(architecture), lc_app_url(architecture))
+            :ok
 
-      :error ->
+          :error ->
+            :ok
+        end
+
+      true ->
         :ok
     end
   end
@@ -35,6 +41,17 @@ defmodule Mix.Tasks.Compile.DownloadCompositor do
       MuonTrap.cmd("tar", ["-xvf", wget_res_path, "-C", app_directory])
       File.rm_rf!(wget_res_path)
       File.touch!(lock_path)
+    end
+
+    check_dep_path =
+      case system_architecture() do
+        {:ok, arch} -> Path.join(lc_app_directory(arch), "smelter/dependency_check")
+        :error -> nil
+      end
+
+    if check_dep_path != nil and File.exists?(check_dep_path) do
+      Membrane.Logger.info("Check smelter dependencies")
+      MuonTrap.cmd(check_dep_path, [])
     end
   end
 
