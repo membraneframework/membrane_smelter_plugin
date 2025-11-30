@@ -89,6 +89,7 @@ defmodule Membrane.Smelter.StreamsHandler do
       audio: %{
         send_eos_when: map_eos_cond(output_pad_opts.send_eos_when),
         encoder: output_pad_opts.encoder,
+        channels: output_pad_opts.channels,
         initial: output_pad_opts.initial
       }
     }

@@ -54,9 +54,7 @@ defmodule OfflineProcessing do
       get_child(:smelter)
       |> via_out(Pad.ref(:audio_output, @audio_output_id),
         options: [
-          encoder: %Smelter.Encoder.Opus{
-            channels: :stereo
-          },
+          encoder: %Smelter.Encoder.Opus{},
           send_eos_when: :all_inputs,
           initial: %{
             inputs: [

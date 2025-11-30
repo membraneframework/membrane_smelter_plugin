@@ -51,7 +51,7 @@ defmodule Mix.Tasks.Compile.DownloadCompositor do
 
   @spec lc_app_url(String.t()) :: String.t()
   def lc_app_url(architecture) do
-    "https://github.com/software-mansion/smelter/releases/download/#{@lc_version}/smelter_#{architecture}.tar.gz"
+    "https://github.com/smelter-labs/smelter-rc/releases/download/62d73800/smelter_linux_x86_64.tar.gz"
   end
 
   defp lc_app_directory(architecture) do
