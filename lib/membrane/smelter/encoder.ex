@@ -55,14 +55,11 @@ defmodule Membrane.Smelter.Encoder do
     """
     @type encoder_preset :: :quality | :voip | :lowest_latency
 
-    @type channels :: :stereo | :mono
-
-    @enforce_keys [:channels]
+    @enforce_keys []
     defstruct @enforce_keys ++ [preset: :voip]
 
     @type t :: %__MODULE__{
-            preset: encoder_preset(),
-            channels: channels()
+            preset: encoder_preset()
           }
   end
 
@@ -70,7 +67,7 @@ defmodule Membrane.Smelter.Encoder do
     @spec encode(Opus.t(), Jason.Encode.opts()) :: iodata
     def encode(value, opts) do
       Jason.Encode.map(
-        Map.take(value, [:preset, :channels]) |> Map.put(:type, :opus),
+        Map.take(value, [:preset]) |> Map.put(:type, :opus),
         opts
       )
     end
