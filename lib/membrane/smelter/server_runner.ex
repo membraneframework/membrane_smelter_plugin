@@ -162,7 +162,7 @@ defmodule Membrane.Smelter.ServerRunner do
     env =
       Map.merge(env, %{
         "SMELTER_API_PORT" => to_string(lc_port),
-        "SMELTER_WEB_RENDERER_ENABLE" => "false"
+        "SMELTER_WEB_RENDERER_ENABLE" => System.get_env("SMELTER_WEB_RENDERER_ENABLE", "false")
       })
 
     spec =
