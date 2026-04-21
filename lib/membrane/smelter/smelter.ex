@@ -463,7 +463,7 @@ defmodule Membrane.Smelter do
 
   @impl true
   def handle_pad_added(input_ref = Pad.ref(:video_input, pad_id), ctx, state) do
-    state = %State{state | context: Context.add_stream(input_ref, state.context)}
+    state = %{state | context: Context.add_stream(input_ref, state.context)}
 
     {:ok, port} =
       StreamsHandler.register_video_input_stream(pad_id, ctx.pad_options, state)
@@ -493,7 +493,7 @@ defmodule Membrane.Smelter do
 
   @impl true
   def handle_pad_added(input_ref = Pad.ref(:audio_input, pad_id), ctx, state) do
-    state = %State{state | context: Context.add_stream(input_ref, state.context)}
+    state = %{state | context: Context.add_stream(input_ref, state.context)}
 
     {:ok, port} =
       StreamsHandler.register_audio_input_stream(pad_id, ctx.pad_options, state)
@@ -523,7 +523,7 @@ defmodule Membrane.Smelter do
 
   @impl true
   def handle_pad_added(output_ref = Pad.ref(:video_output, pad_id), ctx, state) do
-    state = %State{state | context: Context.add_stream(output_ref, state.context)}
+    state = %{state | context: Context.add_stream(output_ref, state.context)}
     {:ok, port} = StreamsHandler.register_video_output_stream(pad_id, ctx.pad_options, state)
     {lc_ip, _lc_port} = state.lc_address
 
@@ -558,7 +558,7 @@ defmodule Membrane.Smelter do
 
   @impl true
   def handle_pad_added(output_ref = Pad.ref(:audio_output, pad_id), ctx, state) do
-    state = %State{state | context: Context.add_stream(output_ref, state.context)}
+    state = %{state | context: Context.add_stream(output_ref, state.context)}
     {:ok, port} = StreamsHandler.register_audio_output_stream(pad_id, ctx.pad_options, state)
     {lc_ip, _lc_port} = state.lc_address
 
@@ -585,7 +585,7 @@ defmodule Membrane.Smelter do
       when input_type in [:audio_input, :video_input] do
     ensure_input_unregistered(pad_id, state.lc_address)
 
-    state = %State{state | context: Context.remove_input(pad_id, state.context)}
+    state = %{state | context: Context.remove_input(pad_id, state.context)}
     {[remove_children: input_group_id(pad_id)], state}
   end
 
@@ -594,7 +594,7 @@ defmodule Membrane.Smelter do
       when output_type in [:audio_output, :video_output] do
     ensure_output_unregistered(pad_id, state.lc_address)
 
-    state = %State{state | context: Context.remove_output(pad_id, state.context)}
+    state = %{state | context: Context.remove_output(pad_id, state.context)}
     {[remove_children: output_group_id(pad_id)], state}
   end
 
