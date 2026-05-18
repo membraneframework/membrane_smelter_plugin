@@ -66,7 +66,6 @@ defmodule Membrane.Smelter.Mixfile do
   defp dialyzer() do
     opts = [
       flags: [:error_handling],
-      plt_add_apps: [:mix, :syntax_tools],
       ignore_warnings: ".dialyzer_ignore.exs"
     ]
 
