@@ -46,7 +46,7 @@ defmodule Membrane.Smelter.Mixfile do
       {:membrane_raw_video_format, "~> 0.3.0 or ~> 0.4.0"},
       {:membrane_opus_plugin, "~> 0.20.4"},
       ## RTP
-      {:membrane_rtp_plugin, "0.31.3"},
+      {:membrane_rtp_plugin, "~> 0.31.4"},
       {:membrane_rtp_h264_plugin, "~> 0.20.0"},
       {:membrane_tcp_plugin, "~> 0.6.0"},
       {:membrane_rtp_opus_plugin, "~> 0.10.0"},
