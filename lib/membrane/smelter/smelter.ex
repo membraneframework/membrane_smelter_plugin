@@ -541,6 +541,7 @@ defmodule Membrane.Smelter do
           connection_side: {:client, lc_ip, port}
         })
         |> child({:tcp_decapsulator, pad_id}, RTP.TCP.Decapsulator)
+        |> child({:rtp_receiver, output_ref}, RTP.Demuxer)
         |> via_out(:output,
           options: [stream_id: {:payload_type, 96}, clock_rate: 90_000, jitter_buffer_latency: 0]
         )
