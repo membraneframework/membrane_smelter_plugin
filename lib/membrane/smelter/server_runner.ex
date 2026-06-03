@@ -191,18 +191,19 @@ defmodule Membrane.Smelter.ServerRunner do
       Process.sleep(100)
 
       with {:is_alive, true} <- {:is_alive, Process.alive?(pid)},
-           {:ok, response} <- ApiClient.get_status({@local_host, lc_port}) do
-        if response.body["instance_id"] == instance_id do
-          {:halt, :started}
-        else
-          {:halt, :not_started}
-        end
+           {:ok, response} <- ApiClient.get_status({@local_host, lc_port}),
+           {:instance_id_matches, true} <-
+             {:instance_id_matches, response.body["instance_id"] == instance_id} do
+        {:halt, :started}
       else
         {:is_alive, false} ->
           {:halt, :not_started}
 
         {:error, _reason} ->
           {:cont, :not_started}
+
+        {:instance_id_matches, false} ->
+          {:halt, :not_started}
       end
     end)
   end
