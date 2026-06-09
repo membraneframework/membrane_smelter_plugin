@@ -52,6 +52,6 @@
   "telemetry": {:hex, :telemetry, "1.4.2", "a0cb522801dffb1c49fe6e30561badffc7b6d0e180db1300df759faa22062855", [:rebar3], [], "hexpm", "928f6495066506077862c0d1646609eed891a4326bee3126ba54b60af61febb1"},
   "telemetry_metrics": {:hex, :telemetry_metrics, "1.1.0", "5bd5f3b5637e0abea0426b947e3ce5dd304f8b3bc6617039e2b5a008adc02f8f", [:mix], [{:telemetry, "~> 0.4 or ~> 1.0", [hex: :telemetry, repo: "hexpm", optional: false]}], "hexpm", "e7b79e8ddfde70adb6db8a6623d1778ec66401f366e9a8f5dd0955c56bc8ce67"},
   "unifex": {:hex, :unifex, "1.2.2", "639288fe8330e9ef0bc5f1ef75077ea0ced6c2c06dd20d59426fa4c119f31ac4", [:mix], [{:bunch, "~> 1.0", [hex: :bunch, repo: "hexpm", optional: false]}, {:bundlex, "~> 1.4", [hex: :bundlex, repo: "hexpm", optional: false]}, {:shmex, "~> 0.5.0", [hex: :shmex, repo: "hexpm", optional: false]}], "hexpm", "a1af4c8b273fc49553395311714730aeafed4efd3da863d60ab896e17526f085"},
-  "websockex": {:hex, :websockex, "0.4.3", "92b7905769c79c6480c02daacaca2ddd49de936d912976a4d3c923723b647bf0", [:mix], [], "hexpm", "95f2e7072b85a3a4cc385602d42115b73ce0b74a9121d0d6dbbf557645ac53e4"},
+  "websockex": {:hex, :websockex, "0.5.1", "9de28d37bbe34f371eb46e29b79c94c94fff79f93c960d842fbf447253558eb4", [:mix], [{:telemetry, "~> 1.0", [hex: :telemetry, repo: "hexpm", optional: false]}], "hexpm", "8ef39576ed56bc3804c9cd8626f8b5d6b5721848d2726c0ccd4f05385a3c9f14"},
   "zarex": {:hex, :zarex, "1.0.6", "f657ed1187e6e90472e24c92b1fd5bf3f846e74bd240bd77276c13f336a8d168", [:mix], [], "hexpm", "b628a9b0bc312f278af2c288078c31fd4757224b82d768e91bcf3bedbe3a50e7"},
 }

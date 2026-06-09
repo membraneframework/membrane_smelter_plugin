@@ -5,7 +5,7 @@ defmodule Mix.Tasks.Compile.DownloadCompositor do
   use Mix.Task
   require Membrane.Logger
 
-  @lc_version "v0.5.0"
+  @lc_version "v0.6.0"
 
   @impl Mix.Task
   def run(_args) do

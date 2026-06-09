@@ -54,7 +54,7 @@ defmodule Membrane.Smelter.Mixfile do
       {:muontrap, "~> 1.0"},
       # VC API
       {:req, "~> 0.5.0"},
-      {:websockex, "~> 0.4.3"},
+      {:websockex, "~> 0.5.1"},
       {:jason, "~> 1.4"},
       # Dev
       {:ex_doc, "~> 0.34", only: :dev, runtime: false},

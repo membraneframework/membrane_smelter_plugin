@@ -179,7 +179,7 @@ defmodule OfflineProcessing do
 
   @impl true
   def handle_child_notification(
-        {:input_delivered, Pad.ref(pad_type, pad_id), ctx},
+        {:input_registered, Pad.ref(pad_type, pad_id), ctx},
         :smelter,
         _membrane_ctx,
         state
@@ -187,7 +187,7 @@ defmodule OfflineProcessing do
     state = %{state | registered_compositor_streams: state.registered_compositor_streams + 1}
 
     if state.registered_compositor_streams == 4 do
-      # send start when all inputs are connected
+      # send start when all inputs and outputs are connected
       {[notify_child: {:smelter, :start_composing}], state}
     else
       {[], state}
