@@ -1,7 +1,7 @@
 defmodule Membrane.Smelter.Mixfile do
   use Mix.Project
 
-  @version "0.12.1"
+  @version "0.12.2"
   @github_url "https://github.com/membraneframework/membrane_smelter_plugin"
 
   def project do
@@ -22,7 +22,8 @@ defmodule Membrane.Smelter.Mixfile do
       # docs
       name: "Membrane Smelter Plugin",
       source_url: @github_url,
-      docs: docs()
+      docs: docs(),
+      aliases: [docs: ["docs", &prepend_llms_links/1]]
     ]
   end
 
@@ -57,7 +58,7 @@ defmodule Membrane.Smelter.Mixfile do
       {:websockex, "~> 0.4.3"},
       {:jason, "~> 1.4"},
       # Dev
-      {:ex_doc, "~> 0.34", only: :dev, runtime: false},
+      {:ex_doc, "~> 0.40", only: :dev, runtime: false},
       {:dialyxir, "~> 1.4", only: :dev, runtime: false},
       {:credo, "~> 1.7", only: :dev, runtime: false}
     ]
@@ -94,7 +95,6 @@ defmodule Membrane.Smelter.Mixfile do
     [
       main: "readme",
       extras: ["README.md", "LICENSE"],
-      formatters: ["html"],
       source_ref: "v#{@version}",
       nest_modules_by_prefix: [Membrane.Smelter, Membrane.Smelter.Request],
       groups_for_modules: [
@@ -106,5 +106,27 @@ defmodule Membrane.Smelter.Mixfile do
         ]
       ]
     ]
+  end
+
+  defp prepend_llms_links(_) do
+    output_dir = docs()[:output] || "doc"
+    path = Path.join(output_dir, "llms.txt")
+
+    if File.exists?(path) do
+      existing = File.read!(path)
+
+      footer = """
+
+
+      ## See Also
+
+      - [Membrane Framework AI Skill](https://hexdocs.pm/membrane_core/skill.md)
+      - [Membrane Core](https://hexdocs.pm/membrane_core/llms.txt)
+      """
+
+      File.write!(path, String.trim_trailing(existing) <> footer)
+    else
+      IO.warn("#{path} not found — llms.txt was not generated, check your ex_doc configuration")
+    end
   end
 end
