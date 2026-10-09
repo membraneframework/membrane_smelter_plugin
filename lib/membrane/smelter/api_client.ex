@@ -1,8 +1,6 @@
 defmodule Membrane.Smelter.ApiClient do
   @moduledoc false
 
-  require Membrane.Logger
-
   @type http_method :: :post | :get
   @type request :: {http_method(), path :: String.t(), body :: any()}
 
