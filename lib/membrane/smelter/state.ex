@@ -1,7 +1,6 @@
 defmodule Membrane.Smelter.State do
   @moduledoc false
 
-  require Membrane.Pad
   alias Membrane.Smelter
   alias Membrane.Smelter.Context
 
